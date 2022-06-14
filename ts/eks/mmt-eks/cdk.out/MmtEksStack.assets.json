@@ -1,0 +1,19 @@
+{
+  "version": "17.0.0",
+  "files": {
+    "34903db0013a432b0139a9f2e2030bc68be385687ecb572a0e1c85494d8ad020": {
+      "source": {
+        "path": "MmtEksStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "34903db0013a432b0139a9f2e2030bc68be385687ecb572a0e1c85494d8ad020.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

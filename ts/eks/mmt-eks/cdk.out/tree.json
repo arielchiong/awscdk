@@ -1,0 +1,140 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.0.119"
+        }
+      },
+      "MmtEksStack": {
+        "id": "MmtEksStack",
+        "path": "MmtEksStack",
+        "children": {
+          "MyCfnCluster": {
+            "id": "MyCfnCluster",
+            "path": "MmtEksStack/MyCfnCluster",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::EKS::Cluster",
+              "aws:cdk:cloudformation:props": {
+                "resourcesVpcConfig": {
+                  "subnetIds": [
+                    "subnet-042f076462ffc1494",
+                    "subnet-0df3d64b14749ec90",
+                    "subnet-05f240f4555ed3b4f",
+                    "subnet-0dd312fc227b67c17",
+                    "subnet-093e273c308330179",
+                    "subnet-068f8ed854d76c41d"
+                  ],
+                  "endpointPrivateAccess": true,
+                  "endpointPublicAccess": true,
+                  "securityGroupIds": [
+                    "sg-0e38896b1ce48a778"
+                  ]
+                },
+                "roleArn": "arn:aws:iam::836287672572:role/eksClusterRole",
+                "name": "eks-demo-2"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_eks.CfnCluster",
+              "version": "2.20.0"
+            }
+          },
+          "MyCfnAddon": {
+            "id": "MyCfnAddon",
+            "path": "MmtEksStack/MyCfnAddon",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::EKS::Addon",
+              "aws:cdk:cloudformation:props": {
+                "addonName": "kube-proxy",
+                "clusterName": "eks-demo-2",
+                "serviceAccountRoleArn": "arn:aws:iam::836287672572:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_eks.CfnAddon",
+              "version": "2.20.0"
+            }
+          },
+          "MyCfnNodegroup": {
+            "id": "MyCfnNodegroup",
+            "path": "MmtEksStack/MyCfnNodegroup",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::EKS::Nodegroup",
+              "aws:cdk:cloudformation:props": {
+                "clusterName": "eks-demo-2",
+                "nodeRole": "arn:aws:iam::836287672572:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup",
+                "subnets": [
+                  "subnet-042f076462ffc1494",
+                  "subnet-0df3d64b14749ec90",
+                  "subnet-05f240f4555ed3b4f",
+                  "subnet-0dd312fc227b67c17"
+                ],
+                "amiType": "AL2_x86_64",
+                "instanceTypes": [
+                  "t3a.medium"
+                ],
+                "nodegroupName": "eks-nodegroup-02",
+                "remoteAccess": {
+                  "ec2SshKey": "key-moments-aps1-int",
+                  "sourceSecurityGroups": [
+                    "sg-0e38896b1ce48a778"
+                  ]
+                },
+                "scalingConfig": {
+                  "desiredSize": 1,
+                  "maxSize": 3,
+                  "minSize": 1
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_eks.CfnNodegroup",
+              "version": "2.20.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "MmtEksStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "MmtEksStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.20.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "MmtEksStack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.20.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.0.119"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.20.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.20.0"
+    }
+  }
+}
